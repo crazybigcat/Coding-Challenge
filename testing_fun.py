@@ -24,3 +24,9 @@ def tensor_contract(a, b, index):
         a.transpose(numpy.concatenate([order_a_hold, order_a_contract])).reshape(hold_shape_a.prod(), -1),
         b.transpose(numpy.concatenate([order_b_contract, order_b_hold])).reshape(-1, hold_shape_b.prod()))\
         .reshape(numpy.concatenate([hold_shape_a, hold_shape_b]))
+
+
+def outer(a, *matrix):
+    for b in matrix:
+        a = numpy.outer(a, b).flatten()
+    return a
